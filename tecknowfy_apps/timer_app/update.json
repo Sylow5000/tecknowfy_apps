@@ -1,6 +1,6 @@
 {
     "new_version": true,
-    "update_url": "Desktop/test/",
+    "update_url": "https://github.com/StuntSkunk/tecknowfy_apps/tree/main/tecknowfy_apps/timer_app/",
     "app_versions":[
         {"version_1": [
             {"app_classes": ["HB_GridLayout_M.py", "HB_Image_M.py", "HB_Label_M.py", "HB_Spacer_M.py", "HB_TextInput_M.py", "hoverable.py", "timer_page.py"]},
