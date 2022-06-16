@@ -1,0 +1,27 @@
+#:kivy 2.1
+
+
+# ------------------------------------------------------------------------------- #
+#                                                                                 #
+#                                Root Widget Class                                #
+#                                                                                 #
+# ------------------------------------------------------------------------------- #
+<CoverImage@CoverBehavior+AsyncImage>:
+    reference_size: self.texture_size
+
+<BaseShadowWidget>:
+    size_hint: (None, None)
+    size: (100, 100)
+    md_bg_color: (0, 0, 1, 0)
+    elevation: 36
+    pos_hint: {'center_x': .5}
+
+<Root_Widget>:
+    Timer_Page:
+        name: "Timer_Page"
+    # Welcome_Page:
+    #     name: "Welcome_Page"
+    # Home_Page:
+    #     name: "Home_Page"
+    # Clock_Page:
+    #     name: "Clock_Page"

@@ -1,0 +1,792 @@
+Old timer
+
+        timer_container = HB_GridLayout_M()
+        timer_label = HB_Label_M()
+        timer_divider = HB_GridLayout_M()
+
+        timer_label_rel_layout = RelativeLayout()
+        timer_label_container = GridLayout()
+        timer_hour_label = Label()
+        timer_minute_label = Label()
+        timer_second_label = Label()
+
+        timer_textinput_rel_layout = RelativeLayout()
+        timer_textinput_container = GridLayout()
+        timer_hour_textinput = HB_TextInput_M()
+        timer_first_colon_rel_layout = RelativeLayout()
+        timer_first_colon_label = Label()
+        timer_minute_textinput = HB_TextInput_M()
+        timer_second_colon_rel_layout = RelativeLayout()
+        timer_second_colon_label = Label()
+        timer_second_textinput = HB_TextInput_M()
+
+        timer_space = HB_Spacer_M()
+        timer_space.size_hint = (1, 1)
+
+        timer_button_container = GridLayout()
+        timer_button_container.id = "{}_button_container".format(prefix_timer)
+        timer_button_container.cols = 1
+        timer_button_container.height = 200
+        timer_button_container.size_hint = (1, None)
+
+        timer_space2 = HB_Spacer_M()
+        timer_space2.height = 100
+
+        # Initialize variables
+        timer_second_label.id = "{}_second_label".format(prefix_timer)
+        timer_second_label.text = "Second"
+        timer_second_label.font_size = 40
+        timer_second_label.halign = "center"
+        timer_second_label.size_hint = (None, 1)
+        timer_second_label.color = (50/255, 50/255, 50/255, 1)
+        timer_second_label.width = timer_second_label.texture_size[0]
+        timer_second_label.bind(pos = self._private_update_timer_label, size = self._private_update_timer_label)
+
+        timer_minute_label.id = "{}_minute_label".format(prefix_timer)
+        timer_minute_label.text = "Minute"
+        timer_minute_label.font_size = 40
+        timer_minute_label.halign = "center"
+        timer_minute_label.size_hint = (None, 1)
+        timer_minute_label.color = (50/255, 50/255, 50/255, 1)
+        timer_minute_label.width = timer_minute_label.texture_size[0]
+        timer_minute_label.bind(pos = self._private_update_timer_label, size = self._private_update_timer_label)
+
+        timer_hour_label.id = "{}_hour_label".format(prefix_timer)
+        timer_hour_label.text = "Hour"
+        timer_hour_label.font_size = 40
+        timer_hour_label.halign = "center"
+        timer_hour_label.size_hint = (None, 1)
+        timer_hour_label.color = (50/255, 50/255, 50/255, 1)
+        timer_hour_label.width = timer_hour_label.texture_size[0]
+        timer_hour_label.bind(pos = self._private_update_timer_label, size = self._private_update_timer_label)
+
+        timer_label_container.id = "{}_label_container".format(prefix_timer)
+        timer_label_container.cols = 3
+        timer_label_container.padding = (50, 0)
+        timer_label_container.width = 100
+        timer_label_container.size_hint = (.7, 1)
+        timer_label_container.pos_hint = {"center_x": .5, "center_y": .5}
+
+        timer_label_rel_layout.height = 100
+        timer_label_rel_layout.size_hint = (1, None)
+
+        self.id_widgets[timer_hour_label.id] = timer_hour_label
+        self.id_widgets[timer_minute_label.id] = timer_minute_label
+        self.id_widgets[timer_second_label.id] = timer_second_label
+
+        # Container for textinputs
+        timer_second_textinput.id = "{}_second_textinput".format(prefix_timer)
+        timer_second_textinput.length = 2
+        timer_second_textinput.alpha = False
+        timer_second_textinput.numeric = True
+        timer_second_textinput.special_characters = False
+        timer_second_textinput.responsive_text = False
+        timer_second_textinput.width = self.id_widgets["first_timer_minute_label"].width
+        timer_second_textinput.text = "00"
+        timer_second_textinput.font_size = 90
+        timer_second_textinput.multiline = False
+        timer_second_textinput.halign = "center"
+        timer_second_textinput.size_hint = (None, 1)
+        timer_second_textinput.background_color = (0, 0, 0, 0)
+        timer_second_textinput.color = (50/255, 50/255, 50/255, 1)
+        timer_second_textinput.padding_y = [timer_second_textinput.height / 2.0 - (timer_second_textinput.line_height / 2.0) * len(timer_second_textinput._lines), 0]
+        timer_second_textinput.bind(pos = self._private_update_textinput, size = self._private_update_textinput)
+
+        timer_first_colon_label.id = "{}_first_colon_label".format(prefix_timer)
+        timer_first_colon_label.text = ":"
+        timer_first_colon_label.font_size = 90
+        timer_first_colon_label.size_hint = (None, None)
+        timer_first_colon_label.size = timer_first_colon_label.texture_size
+        timer_first_colon_label.color = (50/255, 50/255, 50/255, 1)
+        timer_first_colon_label.pos_hint = {"center_x": .5, "center_y": .5}
+        timer_first_colon_rel_layout.add_widget(timer_first_colon_label)
+
+        timer_minute_textinput.id = "{}_minute_textinput".format(prefix_timer)
+        timer_minute_textinput.length = 2
+        timer_minute_textinput.alpha = False
+        timer_minute_textinput.numeric = True
+        timer_minute_textinput.special_characters = False
+        timer_minute_textinput.responsive_text = False
+        timer_minute_textinput.width = self.id_widgets["first_timer_minute_label"].width
+        timer_minute_textinput.text = "00"
+        timer_minute_textinput.font_size = 90
+        timer_minute_textinput.multiline = False
+        timer_minute_textinput.halign = "center"
+        timer_minute_textinput.size_hint = (None, 1)
+        timer_minute_textinput.background_color = (0, 0, 0, 0)
+        timer_minute_textinput.color = (50/255, 50/255, 50/255, 1)
+        timer_minute_textinput.bind(pos = self._private_update_textinput, size = self._private_update_textinput)
+        # timer_minute_textinput.padding_y = [timer_minute_textinput.height / 2.0 - (timer_minute_textinput.line_height / 2.0) * len(timer_minute_textinput._lines), 0]
+
+        timer_second_colon_label.id = "{}_second_colon_label".format(prefix_timer)
+        timer_second_colon_label.text = ":"
+        timer_second_colon_label.font_size = 90
+        timer_second_colon_label.size_hint = (None, None)
+        timer_second_colon_label.size = timer_second_colon_label.texture_size
+        timer_second_colon_label.color = (50/255, 50/255, 50/255, 1)
+        timer_second_colon_label.pos_hint = {"center_x": .5, "center_y": .5}
+        timer_second_colon_rel_layout.add_widget(timer_second_colon_label)
+
+        timer_hour_textinput.id = "{}_hour_textinput".format(prefix_timer)
+        timer_hour_textinput.length = 2
+        timer_hour_textinput.alpha = False
+        timer_hour_textinput.numeric = True
+        timer_hour_textinput.special_characters = False
+        timer_hour_textinput.responsive_text = False
+        timer_hour_textinput.width = self.id_widgets["first_timer_minute_label"].width
+        timer_hour_textinput.text = "00"
+        timer_hour_textinput.font_size = 90
+        timer_hour_textinput.multiline = False
+        timer_hour_textinput.halign = "center"
+        timer_hour_textinput.size_hint = (None, 1)
+        timer_hour_textinput.bind(pos = self._private_update_textinput, size = self._private_update_textinput)
+        timer_hour_textinput.background_color = (0, 0, 0, 0)
+        timer_hour_textinput.color = (50/255, 50/255, 50/255, 1)
+        timer_hour_textinput.padding_y = [timer_hour_textinput.height / 2.0 - (timer_hour_textinput.line_height / 2.0) * len(timer_hour_textinput._lines), 0]
+
+
+        timer_textinput_container.cols = 5
+        timer_textinput_container.padding = (50, 0)
+        timer_textinput_container.size_hint = (.7, 1)
+        timer_textinput_container.pos_hint = {"center_x": .5, "center_y": .55}
+        timer_textinput_container.add_widget(timer_hour_textinput)
+        timer_textinput_container.add_widget(timer_first_colon_rel_layout)
+        timer_textinput_container.add_widget(timer_minute_textinput)
+        timer_textinput_container.add_widget(timer_second_colon_rel_layout)
+        timer_textinput_container.add_widget(timer_second_textinput)
+        timer_textinput_rel_layout.size_hint = (1, None)
+        timer_textinput_rel_layout.height = 150
+        timer_textinput_rel_layout.add_widget(timer_textinput_container)
+
+
+
+        timer_divider.id = "{}_divider".format(prefix_timer)
+        timer_divider.height = 3
+        timer_divider.hover = False
+        timer_divider.change_color = False
+        timer_divider.size_hint = (1, None)
+        timer_divider.normal_color_b = (0, 0, 0, 1)
+        timer_divider.bind(pos = self._private_update_widget, size = self._private_update_widget)
+
+        timer_label.id = "{}_label".format(prefix_timer)
+        timer_label.height = 80
+        timer_label.text = "Label 1"
+        timer_label.change_color = False
+        timer_label.size_hint = (1, None)
+        timer_label.static_font_size = 40
+        timer_label.responsive_text = False
+        timer_label.color = (50/255, 50/255, 50/255, 1)
+        timer_label.normal_color_b = (240/255, 240/255, 240/255, 1)
+
+        timer_container.id = "{}_container".format(prefix_timer)
+        timer_container.cols = 1
+        timer_container.hover = False
+        timer_container.outline_width = 2
+        timer_container.change_color = False
+        timer_container.display_outline = True
+        timer_container.normal_color_b = (1, 1, 1, 1)
+        timer_container.outline_color = (50/255, 50/255, 50/255, 1)
+
+        self.id_widgets[timer_button_container.id] = timer_button_container
+        self.id_widgets[timer_container.id] = timer_container
+        self.id_widgets[timer_label.id] = timer_label
+        self.id_widgets[timer_divider.id] = timer_divider
+        self.id_widgets[timer_label_container.id] = timer_label_container
+
+        print(self.id_widgets)
+        timer_label_container.spacing = ((int(self.id_widgets["first_timer_label_container"].width) - 100) - (int(self.id_widgets["first_timer_minute_label"].width) * 3)) / 2
+        timer_label_container.bind(pos = self._private_update_timer_spacing, size = self._private_update_timer_spacing)
+
+        timer_label_container.add_widget(timer_hour_label)
+        timer_label_container.add_widget(timer_minute_label)
+        timer_label_container.add_widget(timer_second_label)
+        timer_label_rel_layout.add_widget(timer_label_container)
+        timer_container.add_widget(timer_label)
+        timer_container.add_widget(timer_divider)
+        timer_container.add_widget(timer_label_rel_layout)
+        timer_container.add_widget(timer_textinput_rel_layout)
+        timer_container.add_widget(timer_space)
+        timer_container.add_widget(timer_button_container)
+        timer_container.add_widget(timer_space2)
+        self.ids.timers_container.add_widget(timer_container)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+New Timer
+
+
+
+        # # Create Timer Container (eg. first_timer_container)
+        # timer_container = HB_GridLayout_M()
+        # timer_container.id = "{}_container".format(prefix_timer)
+        # timer_container.cols = 1
+        # timer_container.hover = False
+        # timer_container.outline_width = 2
+        # timer_container.change_color = False
+        # timer_container.display_outline = True
+        # timer_container.normal_color_b = (1, 1, 1, 1)
+        # timer_container.outline_color = (50/255, 50/255, 50/255, 1)
+        # self.id_widgets[timer_container.id] = timer_container
+
+        # # Create Timer Label (eg. first_timer_label)
+        # timer_label = HB_Label_M()
+        # timer_label.id = "{}_label".format(prefix_timer)
+        # timer_label.height = 80
+        # timer_label.text = timer_name
+        # timer_label.change_color = False
+        # timer_label.size_hint = (1, None)
+        # timer_label.static_font_size = 40
+        # timer_label.responsive_text = False
+        # timer_label.color = (50/255, 50/255, 50/255, 1)
+        # timer_label.normal_color_b = (240/255, 240/255, 240/255, 1)
+        # self.id_widgets[timer_label.id] = timer_label
+
+        # # Create Timer Divider (eg. first_timer_divider)
+        # timer_divider = HB_GridLayout_M()
+        # timer_divider.id = "{}_divider".format(prefix_timer)
+        # timer_divider.height = 3
+        # timer_divider.hover = False
+        # timer_divider.change_color = False
+        # timer_divider.size_hint = (1, None)
+        # timer_divider.normal_color_b = (0, 0, 0, 1)
+        # timer_divider.bind(pos = self._private_update_widget, size = self._private_update_widget)
+        # self.id_widgets[timer_divider.id] = timer_divider
+
+        # # Create Timer Label Relative Layout (eg. first_timer_label_rel_layout)
+        # timer_label_rel_layout = RelativeLayout()
+        # timer_label_rel_layout.id  = "{}_label_rel_layout".format(prefix_timer)
+        # timer_label_rel_layout.height = 100
+        # timer_label_rel_layout.size_hint = (1, None)
+        # self.id_widgets[timer_label_rel_layout.id] = timer_label_rel_layout
+
+        # # Create Timer Label Container (eg. first_timer_label_container)
+        # timer_label_container = GridLayout()
+        # timer_label_container.id = "{}_label_container".format(prefix_timer)
+        # timer_label_container.cols = 3
+        # timer_label_container.width = 400
+        # timer_label_container.padding = (50, 0)
+        # timer_label_container.size_hint = (.7, 1)
+        # timer_label_container.pos_hint = {"center_x": .5, "center_y": .5}
+        # timer_label_container.bind(pos = self._private_update_timer_spacing, size = self._private_update_timer_spacing)
+        # self.id_widgets[timer_label_container.id] = timer_label_container
+
+        # # with timer_label_container.canvas.before:
+        # #     Color(0, 0, 1, 1)
+        # #     timer_label_container.rect = RoundedRectangle(pos =  timer_label_container.pos, size = timer_label_container.size, radius = [1])
+        # # timer_label_container.bind(pos = self._private_update_widget, size = self._private_update_widget)
+
+        # # Create Timer Labels (eg. first_timer_hour_label)
+        # timer_label_array = []
+        # for i in range(0, 3):
+        #     if i == 0: textinput_name = "Hour"
+        #     if i == 1: textinput_name = "Minute"
+        #     if i == 2: textinput_name = "Second"
+        #     timer_time_label = Label()
+        #     timer_time_label.id = "{}_{}{}_label".format(prefix_timer, textinput_name[0].lower(), textinput_name[1:])
+        #     timer_time_label.text = textinput_name
+        #     timer_time_label.font_size = 40
+        #     timer_time_label.halign = "center"
+        #     timer_time_label.size_hint = (None, 1)
+        #     timer_time_label.color = (50/255, 50/255, 50/255, 1)
+        #     timer_time_label.width = timer_time_label.texture_size[0]
+
+        #     with timer_time_label.canvas.before:
+        #         Color(0, 1, 0, 1)
+        #         timer_time_label.rect = RoundedRectangle(pos =  timer_time_label.pos, size = timer_time_label.size, radius = [1])
+        #     timer_time_label.bind(pos = self._private_update_widget, size = self._private_update_widget)    
+        #     timer_time_label.bind(pos = self._private_update_timer_label, size = self._private_update_timer_label)  
+
+
+        #     timer_label_array.append(timer_time_label)
+        #     self.id_widgets[timer_time_label.id] = timer_time_label
+
+        # # Create Timer TextInput Relative Layout (eg. first_timer_textinput_rel_layout)
+        # timer_textinput_rel_layout = RelativeLayout()
+        # timer_textinput_rel_layout.size_hint = (1, None)
+        # timer_textinput_rel_layout.height = 150
+
+        # # Create Timer TextInput Container (eg. first_timer_textinput_container)
+        # timer_textinput_container = GridLayout()
+        # timer_textinput_container.cols = 5
+        # timer_textinput_container.padding = (50, 0)
+        # timer_textinput_container.size_hint = (.7, 1)
+        # timer_textinput_container.pos_hint = {"center_x": .5, "center_y": .5}
+
+        # with timer_textinput_container.canvas.before:
+        #     Color(1, 0, 0, 1)
+        #     timer_textinput_container.rect = RoundedRectangle(pos =  timer_textinput_container.pos, size = timer_textinput_container.size, radius = [1])
+        # timer_textinput_container.bind(pos = self._private_update_widget, size = self._private_update_widget)
+
+        # # Create Timer TextInputs (eg. first_timer_hour_textinput)
+        # timer_textinput_array = []
+        # for i in range(0, 3):
+        #     if i == 0: textinput_name = "hour"
+        #     if i == 1: textinput_name = "minute"
+        #     if i == 2: textinput_name = "second"
+        #     timer_textinput = HB_TextInput_M()
+        #     timer_textinput.id = "{}_{}_textinput".format(prefix_timer, textinput_name)
+        #     timer_textinput.length = 2
+        #     timer_textinput.alpha = False
+        #     timer_textinput.numeric = True
+        #     timer_textinput.special_characters = False
+        #     timer_textinput.responsive_text = False
+        #     timer_textinput.width = self.id_widgets["first_timer_minute_label"].width
+        #     timer_textinput.text = "00"
+        #     timer_textinput.font_size = 90
+        #     timer_textinput.multiline = False
+        #     timer_textinput.halign = "center"
+        #     timer_textinput.size_hint = (None, 1)
+        #     timer_textinput.background_color = (0, 0, 0, 0)
+        #     timer_textinput.color = (50/255, 50/255, 50/255, 1)
+        #     timer_textinput.bind(pos = self._private_update_textinput, size = self._private_update_textinput)
+        #     timer_textinput_array.append(timer_textinput)
+        #     self.id_widgets[timer_textinput.id] = timer_textinput
+           
+        # # Create Timer First Colon Relative Layout (eg. first_timer_first_colon_rel_layout)
+        # timer_first_colon_rel_layout = RelativeLayout()
+
+        # # Create Timer Second Colon Relative Layout (eg. first_timer_second_colon_rel_layout)
+        # timer_second_colon_rel_layout = RelativeLayout()
+
+        # # Create Timer Colons (eg. first_timer_first_colon_label)
+        # timer_colon_array = []
+        # for i in range(0, 2):
+        #     if i == 0: textinput_name = "first"
+        #     if i == 1: textinput_name = "second"
+        #     timer_colon_label = Label()
+        #     timer_colon_label.id = "{}_{}_colon_label".format(prefix_timer, textinput_name)
+        #     timer_colon_label.text = ":"
+        #     timer_colon_label.font_size = 90
+        #     timer_colon_label.size_hint = (None, None)
+        #     timer_colon_label.size = timer_colon_label.texture_size
+        #     timer_colon_label.color = (50/255, 50/255, 50/255, 1)
+        #     timer_colon_label.pos_hint = {"center_x": .5, "center_y": .5}
+        #     timer_colon_array.append(timer_colon_label)
+        #     self.id_widgets[timer_colon_label.id] = timer_colon_label
+
+        # # Create Timer Button Container (eg. first_timer_button_container)
+        # timer_button_container = GridLayout()
+        # timer_button_container.id = "{}_button_container".format(prefix_timer)
+        # timer_button_container.cols = 1
+        # timer_button_container.height = 200
+        # timer_button_container.size_hint = (1, None)
+
+        # # Add to screen
+        # timer_label_container.add_widget(timer_label_array[0])
+        # timer_label_container.add_widget(timer_label_array[1])
+        # timer_label_container.add_widget(timer_label_array[2])
+        # timer_label_rel_layout.add_widget(timer_label_container)
+
+        # timer_first_colon_rel_layout.add_widget(timer_colon_array[0])
+        # timer_first_colon_rel_layout.add_widget(timer_colon_array[1])
+        # timer_textinput_container.add_widget(timer_textinput_array[0])
+        # timer_textinput_container.add_widget(timer_first_colon_rel_layout)
+        # timer_textinput_container.add_widget(timer_textinput_array[1])
+        # timer_textinput_container.add_widget(timer_second_colon_rel_layout)
+        # timer_textinput_container.add_widget(timer_textinput_array[2])
+        # timer_textinput_rel_layout.add_widget(timer_textinput_container)
+
+        # timer_container.add_widget(timer_label)
+        # timer_container.add_widget(timer_divider)
+        # timer_container.add_widget(timer_label_rel_layout)
+        # timer_container.add_widget(timer_textinput_rel_layout)
+        # timer_container.add_widget(HB_Spacer_M(size_hint = (1, 1)))
+        # timer_container.add_widget(timer_button_container)
+        # timer_container.add_widget(HB_Spacer_M())
+        
+        # self.ids.timers_container.add_widget(timer_container)
+        # # Clock.schedule_once(self._private_initialize_timer_page, 1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Modern Timer
+
+
+
+        timer_container = HB_GridLayout_M()
+        timer_label = HB_Label_M()
+        timer_divider = HB_GridLayout_M()
+
+        timer_label_rel_layout = RelativeLayout()
+        timer_label_container = GridLayout()
+        timer_hour_label = Label()
+        timer_minute_label = Label()
+        timer_second_label = Label()
+
+        timer_textinput_rel_layout = RelativeLayout()
+        timer_textinput_container = GridLayout()
+        timer_hour_textinput = HB_TextInput_M()
+        timer_first_colon_rel_layout = RelativeLayout()
+        timer_first_colon_label = Label()
+        timer_minute_textinput = HB_TextInput_M()
+        timer_second_colon_rel_layout = RelativeLayout()
+        timer_second_colon_label = Label()
+        timer_second_textinput = HB_TextInput_M()
+
+        timer_space = HB_Spacer_M()
+        timer_space.size_hint = (1, 1)
+
+        timer_button_container = GridLayout()
+        timer_button_container.id = "{}_button_container".format(prefix_timer)
+        timer_button_container.cols = 1
+        timer_button_container.height = 200
+        timer_button_container.size_hint = (1, None)
+
+        timer_space2 = HB_Spacer_M()
+        timer_space2.height = 100
+
+        # Initialize variables
+        timer_second_label.id = "{}_second_label".format(prefix_timer)
+        timer_second_label.text = "Second"
+        timer_second_label.font_size = 40
+        timer_second_label.halign = "center"
+        timer_second_label.size_hint = (None, 1)
+        timer_second_label.color = (50/255, 50/255, 50/255, 1)
+        timer_second_label.width = timer_second_label.texture_size[0]
+        timer_second_label.bind(pos = self._private_update_timer_label, size = self._private_update_timer_label)
+
+        timer_minute_label.id = "{}_minute_label".format(prefix_timer)
+        timer_minute_label.text = "Minute"
+        timer_minute_label.font_size = 40
+        timer_minute_label.halign = "center"
+        timer_minute_label.size_hint = (None, 1)
+        timer_minute_label.color = (50/255, 50/255, 50/255, 1)
+        timer_minute_label.width = timer_minute_label.texture_size[0]
+        timer_minute_label.bind(pos = self._private_update_timer_label, size = self._private_update_timer_label)
+
+        timer_hour_label.id = "{}_hour_label".format(prefix_timer)
+        timer_hour_label.text = "Hour"
+        timer_hour_label.font_size = 40
+        timer_hour_label.halign = "center"
+        timer_hour_label.size_hint = (None, 1)
+        timer_hour_label.color = (50/255, 50/255, 50/255, 1)
+        timer_hour_label.width = timer_hour_label.texture_size[0]
+        timer_hour_label.bind(pos = self._private_update_timer_label, size = self._private_update_timer_label)
+
+        timer_label_container.id = "{}_label_container".format(prefix_timer)
+        timer_label_container.cols = 3
+        timer_label_container.padding = (50, 0)
+        timer_label_container.width = 600
+        timer_label_container.size_hint = content_width
+        timer_label_container.pos_hint = {"center_x": .5, "center_y": .5}
+
+        timer_label_rel_layout.height = 100
+        timer_label_rel_layout.size_hint = (1, None)
+
+        self.id_widgets[timer_hour_label.id] = timer_hour_label
+        self.id_widgets[timer_minute_label.id] = timer_minute_label
+        self.id_widgets[timer_second_label.id] = timer_second_label
+
+        # Container for textinputs
+        timer_second_textinput.id = "{}_second_textinput".format(prefix_timer)
+        timer_second_textinput.length = 2
+        timer_second_textinput.alpha = False
+        timer_second_textinput.numeric = True
+        timer_second_textinput.special_characters = False
+        timer_second_textinput.responsive_text = False
+        timer_second_textinput.width = self.id_widgets["first_timer_minute_label"].width
+        timer_second_textinput.text = "00"
+        timer_second_textinput.font_size = 90
+        timer_second_textinput.multiline = False
+        timer_second_textinput.halign = "center"
+        timer_second_textinput.size_hint = (None, 1)
+        timer_second_textinput.background_color = (0, 0, 0, 0)
+        timer_second_textinput.color = (50/255, 50/255, 50/255, 1)
+        timer_second_textinput.padding_y = [timer_second_textinput.height / 2.0 - (timer_second_textinput.line_height / 2.0) * len(timer_second_textinput._lines), 0]
+        timer_second_textinput.bind(pos = self._private_update_textinput, size = self._private_update_textinput)
+
+        timer_first_colon_label.id = "{}_first_colon_label".format(prefix_timer)
+        timer_first_colon_label.text = ":"
+        timer_first_colon_label.font_size = 90
+        timer_first_colon_label.size_hint = (None, None)
+        timer_first_colon_label.size = timer_first_colon_label.texture_size
+        timer_first_colon_label.color = (50/255, 50/255, 50/255, 1)
+        timer_first_colon_label.pos_hint = {"center_x": .5, "center_y": .5}
+        timer_first_colon_rel_layout.add_widget(timer_first_colon_label)
+
+        timer_minute_textinput.id = "{}_minute_textinput".format(prefix_timer)
+        timer_minute_textinput.length = 2
+        timer_minute_textinput.alpha = False
+        timer_minute_textinput.numeric = True
+        timer_minute_textinput.special_characters = False
+        timer_minute_textinput.responsive_text = False
+        timer_minute_textinput.width = self.id_widgets["first_timer_minute_label"].width
+        timer_minute_textinput.text = "00"
+        timer_minute_textinput.font_size = 90
+        timer_minute_textinput.multiline = False
+        timer_minute_textinput.halign = "center"
+        timer_minute_textinput.size_hint = (None, 1)
+        timer_minute_textinput.background_color = (0, 0, 0, 0)
+        timer_minute_textinput.color = (50/255, 50/255, 50/255, 1)
+        timer_minute_textinput.bind(pos = self._private_update_textinput, size = self._private_update_textinput)
+
+        timer_second_colon_label.id = "{}_second_colon_label".format(prefix_timer)
+        timer_second_colon_label.text = ":"
+        timer_second_colon_label.font_size = 90
+        timer_second_colon_label.size_hint = (None, None)
+        timer_second_colon_label.size = timer_second_colon_label.texture_size
+        timer_second_colon_label.color = (50/255, 50/255, 50/255, 1)
+        timer_second_colon_label.pos_hint = {"center_x": .5, "center_y": .5}
+        timer_second_colon_rel_layout.add_widget(timer_second_colon_label)
+
+        timer_hour_textinput.id = "{}_hour_textinput".format(prefix_timer)
+        timer_hour_textinput.length = 2
+        timer_hour_textinput.alpha = False
+        timer_hour_textinput.numeric = True
+        timer_hour_textinput.special_characters = False
+        timer_hour_textinput.responsive_text = False
+        timer_hour_textinput.width = self.id_widgets["first_timer_minute_label"].width
+        timer_hour_textinput.text = "00"
+        timer_hour_textinput.font_size = 90
+        timer_hour_textinput.multiline = False
+        timer_hour_textinput.halign = "center"
+        timer_hour_textinput.size_hint = (None, 1)
+        timer_hour_textinput.bind(pos = self._private_update_textinput, size = self._private_update_textinput)
+        timer_hour_textinput.background_color = (0, 0, 0, 0)
+        timer_hour_textinput.color = (50/255, 50/255, 50/255, 1)
+        timer_hour_textinput.padding_y = [timer_hour_textinput.height / 2.0 - (timer_hour_textinput.line_height / 2.0) * len(timer_hour_textinput._lines), 0]
+
+        timer_textinput_container.cols = 5
+        timer_textinput_container.width = 600
+        timer_textinput_container.padding = (50, 0)
+        timer_textinput_container.size_hint = content_width
+        timer_textinput_container.pos_hint = {"center_x": .5, "center_y": .55}
+        timer_textinput_container.add_widget(timer_hour_textinput)
+        timer_textinput_container.add_widget(timer_first_colon_rel_layout)
+        timer_textinput_container.add_widget(timer_minute_textinput)
+        timer_textinput_container.add_widget(timer_second_colon_rel_layout)
+        timer_textinput_container.add_widget(timer_second_textinput)
+        timer_textinput_rel_layout.size_hint = (1, None)
+        timer_textinput_rel_layout.height = 150
+        timer_textinput_rel_layout.add_widget(timer_textinput_container)
+
+        timer_divider.id = "{}_divider".format(prefix_timer)
+        timer_divider.height = 3
+        timer_divider.hover = False
+        timer_divider.change_color = False
+        timer_divider.size_hint = (1, None)
+        timer_divider.normal_color_b = (0, 0, 0, 1)
+        timer_divider.bind(pos = self._private_update_widget, size = self._private_update_widget)
+
+        timer_label.id = "{}_label".format(prefix_timer)
+        timer_label.height = 80
+        timer_label.text = timer_name
+        timer_label.change_color = False
+        timer_label.size_hint = (1, None)
+        timer_label.static_font_size = 40
+        timer_label.responsive_text = False
+        timer_label.color = (50/255, 50/255, 50/255, 1)
+        timer_label.normal_color_b = (240/255, 240/255, 240/255, 1)
+
+        timer_container.id = "{}_container".format(prefix_timer)
+        timer_container.cols = 1
+        timer_container.hover = False
+        timer_container.outline_width = 2
+        timer_container.change_color = False
+        timer_container.display_outline = True
+        timer_container.normal_color_b = (1, 1, 1, 1)
+        timer_container.outline_color = (50/255, 50/255, 50/255, 1)
+
+        self.id_widgets[timer_button_container.id] = timer_button_container
+        self.id_widgets[timer_container.id] = timer_container
+        self.id_widgets[timer_label.id] = timer_label
+        self.id_widgets[timer_divider.id] = timer_divider
+        self.id_widgets[timer_label_container.id] = timer_label_container
+
+        print(self.id_widgets)
+        timer_label_container.spacing = ((int(self.id_widgets["first_timer_label_container"].width) - 100) - (int(self.id_widgets["first_timer_minute_label"].width) * 3)) / 2
+        timer_label_container.bind(pos = self._private_update_timer_spacing, size = self._private_update_timer_spacing)
+
+        timer_label_container.add_widget(timer_hour_label)
+        timer_label_container.add_widget(timer_minute_label)
+        timer_label_container.add_widget(timer_second_label)
+        timer_label_rel_layout.add_widget(timer_label_container)
+        timer_container.add_widget(timer_label)
+        timer_container.add_widget(timer_divider)
+        timer_container.add_widget(timer_label_rel_layout)
+        timer_container.add_widget(timer_textinput_rel_layout)
+        timer_container.add_widget(timer_space)
+        timer_container.add_widget(timer_button_container)
+        timer_container.add_widget(timer_space2)
+        self.ids.timers_container.add_widget(timer_container)
