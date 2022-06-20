@@ -11,11 +11,9 @@
             ]
         },
         {"version_2": [
-            {"app_classes": ["HB_GridLayout_M.py", "HB_Image_M.py", "HB_Label_M.py", "HB_Spacer_M.py", "HB_TextInput_M.py", "hoverable.py", "timer_page.py"]},
-            {"app_data": ["app_data.json"]},
-            {"app_media": ["add.png", "edit.png", "icon.icns", "icon.png"]},
-            {"app_ui": ["root_widget.kv", "timer_page.kv"]},
-            {"app_start": ["main.py"]}
+            {"delete": "app_classes folder *"},
+            {"delete": "app_media folder *"},
+            {"delete": "app_ui folder *"},
             ]
         }
     ]
