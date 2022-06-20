@@ -13,7 +13,7 @@
         {"version_2": [
             {"delete": "app_classes folder *"},
             {"delete": "app_media folder *"},
-            {"delete": "app_ui folder *"}
+            {"delete": "app_ui * *"}
             ]
         }
     ]
