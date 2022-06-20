@@ -1,5 +1,5 @@
 {
-    "force_update": True,
+    "force_update": true,
     "update_url": "https://raw.githubusercontent.com/StuntSkunk/tecknowfy_apps/main/tecknowfy_apps/timer_app/",
     "app_versions":[
         {"version_1": [
