@@ -58,9 +58,9 @@ class Timer_Page_M(Screen):
             "third_timer": {"time": [0, 0, 0], "state": "none", "previous_time": [0, 0, 0]}
         }
         self.header_height = 100
-        self.header_background = (167/255, 105/255, 255/255, 1)
+        self.header_background = (1, 0, 0, 1)
         self.footer_height = 100
-        self.footer_background = (40/255, 40/255, 40/255, 1)
+        self.footer_background = (1, 0, 0, 1)
         Clock.schedule_once(self._private_initialize_timer_page, 1)
 
     # start_timer
