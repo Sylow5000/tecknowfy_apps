@@ -3,12 +3,12 @@
         {"v1.0": {}},
         {"v1.1": {
             "commands": [
-                {"command": "delete", "directory": "app/app_classes/", "file_type": "self", "file_path": null},
-                {"command": "delete", "directory": "app/app_media/", "file_type": "self", "file_path": null},
-                {"command": "delete", "directory": "app/app_ui/", "file_type": "self", "file_path": null},
-                {"command": "create", "directory": "app/app_classes/", "file_type": "self", "file_path": null},
-                {"command": "create", "directory": "app/app_media/", "file_type": "self", "file_path": null},
-                {"command": "create", "directory": "app/app_ui/", "file_type": "self", "file_path": null},
+                {"command": "delete", "directory": "app/app_classes/", "file_type": "self", "file_path": ""},
+                {"command": "delete", "directory": "app/app_media/", "file_type": "self", "file_path": ""},
+                {"command": "delete", "directory": "app/app_ui/", "file_type": "self", "file_path": ""},
+                {"command": "create", "directory": "app/app_classes/", "file_type": "self", "file_path": ""},
+                {"command": "create", "directory": "app/app_media/", "file_type": "self", "file_path": ""},
+                {"command": "create", "directory": "app/app_ui/", "file_type": "self", "file_path": ""},
                 {"command": "create", "directory": "app/app_classes/", "file_type": "file", "file_path": "app/app_classes/HB_GridLayout_M.py"},
                 {"command": "create", "directory": "app/app_classes/", "file_type": "file", "file_path": "app/app_classes/HB_Image_M.py"},
                 {"command": "create", "directory": "app/app_classes/", "file_type": "file", "file_path": "app/app_classes/HB_Label_M.py"},
